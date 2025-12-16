@@ -1,23 +1,17 @@
 pipeline {
     agent any
-
     stages {
-        stage('Checkout') {
+        stage('Checkout Code1') {
             steps {
-                git branch: 'main', url: 'https://github.com/GurumoorthysHub/task1.git'
+                git branch: 'main', 
+                    url: 'https://github.com/GurumoorthysHub/task1.git', 
+                    credentialsId: 'github-creds'
             }
         }
-
-        stage('Run App') {
+        stage('Hello') {
             steps {
-                sh 'echo Hello from Jenkins Pipeline!'
+                echo 'Code successfully checked out from GitHub!'
             }
-        }
-    }
-
-    post {
-        always {
-            echo 'Pipeline finished!'
         }
     }
 }
